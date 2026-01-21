@@ -3,125 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ENDURO BEAST | Unlimited MTB</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com" rel="stylesheet">
+    <title>Evolución Humana | Estilo Energético</title>
     <style>
+        /* ESTILO INSPIRADO EN MONSTER/RED BULL */
         :root {
-            --monster-green: #00ff00; /* Verde Monster */
-            --redbull-red: #ed1c24;   /* Rojo Red Bull */
+            --bg-color: #0b0b0b;
+            --accent-color: #39ff14; /* Verde Monster (cambia a #ed1c24 para Red Bull) */
+            --text-color: #ffffff;
+            --secondary-bg: #1a1a1a;
         }
-        body { background-color: #050505; color: white; font-family: 'Oswald', sans-serif; }
-        
-        .font-marker { font-family: 'Permanent+Marker', cursive; }
-        
-        /* Efecto de inclinación estilo Monster/RedBull */
-        .skew-section { transform: skewY(-2deg); }
-        .skew-content { transform: skewY(2deg); }
 
-        .hero-gradient {
-            background: linear-gradient(0deg, rgba(5,5,5,1) 0%, rgba(5,5,5,0.2) 50%, rgba(5,5,5,0.5) 100%),
-                        url('https://images.unsplash.com');
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Futura', 'Impact', sans-serif; /* Tipografía bold tipo Red Bull */
+            overflow-x: hidden;
+        }
+
+        /* Hero Section (Cabecera larga) */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com'); /* Imagen de fondo */
             background-size: cover;
-            background-position: center;
+            border-bottom: 5px solid var(--accent-color);
         }
 
-        .btn-beast {
-            position: relative;
-            background: var(--monster-green);
-            color: black;
-            font-weight: 900;
-            transition: all 0.3s;
-            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+        .hero h1 {
+            font-size: 5rem;
+            text-transform: uppercase;
+            margin: 0;
+            text-shadow: 3px 3px 0 var(--accent-color);
         }
-        .btn-beast:hover {
-            background: white;
-            transform: scale(1.1) rotate(-2deg);
+
+        /* Línea de tiempo vertical */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 40px 0;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--accent-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .container {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .left { left: 0; text-align: right; }
+        .right { left: 50%; text-align: left; }
+
+        .content {
+            padding: 20px;
+            background-color: var(--secondary-bg);
+            border: 2px solid var(--accent-color);
+            border-radius: 6px;
+            transition: transform 0.3s;
+        }
+
+        .content:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px var(--accent-color);
+        }
+
+        h2 { color: var(--accent-color); text-transform: uppercase; }
+
+        /* Responsive */
+        @media screen and (max-width: 600px) {
+            .timeline::after { left: 31px; }
+            .container { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .right { left: 0%; text-align: left; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navegación Estilo Monster -->
-    <nav class="flex justify-between items-center p-4 bg-black border-b-2 border-[#00ff00]">
-        <div class="text-3xl font-black italic tracking-tighter text-[#00ff00]">ENDURO<span class="text-white">BEAST</span></div>
-        <div class="space-x-6 hidden md:flex text-sm uppercase tracking-widest">
-            <a href="#" class="hover:text-[#00ff00] transition">Atletas</a>
-            <a href="#" class="hover:text-[#00ff00] transition">Eventos 2026</a>
-            <a href="#" class="hover:text-[#00ff00] transition">Bicis</a>
-        </div>
-        <div class="flex items-center gap-4">
-            <span class="w-8 h-8 bg-[#00ff00] rounded-full"></span>
-        </div>
-    </nav>
-
-    <!-- Hero Section: Impacto Total -->
-    <header class="hero-gradient h-[85vh] flex items-center justify-center relative overflow-hidden">
-        <div class="text-center z-10 px-4">
-            <h2 class="text-[#00ff00] text-2xl mb-2 tracking-[0.3em] font-bold">FEEL THE ADRENALINE</h2>
-            <h1 class="text-7xl md:text-9xl font-black italic uppercase leading-none drop-shadow-2xl">
-                BEYOND <br> <span class="text-transparent" style="-webkit-text-stroke: 2px white;">LIMITS</span>
-            </h1>
-            <div class="mt-10">
-                <button class="btn-beast px-12 py-5 text-2xl italic">ÚNETE AL CLAN</button>
-            </div>
-        </div>
-        <!-- Decoración lateral -->
-        <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#050505] to-transparent"></div>
-    </header>
-
-    <!-- Sección de Noticias Inclinada -->
-    <section class="bg-[#111] py-20 skew-section border-y border-[#333]">
-        <div class="max-w-7xl mx-auto px-6 skew-content">
-            <div class="flex justify-between items-end mb-12">
-                <h3 class="text-5xl font-black italic uppercase">Últimos <span class="text-[#00ff00]">Edits</span></h3>
-                <a href="#" class="text-[#00ff00] underline uppercase text-sm mb-2">Ver todo</a>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Video/News Card 1 -->
-                <div class="group cursor-pointer">
-                    <div class="relative overflow-hidden aspect-video">
-                        <img src="https://images.unsplash.com" class="object-cover w-full h-full grayscale group-hover:grayscale-0 transition duration-500">
-                        <div class="absolute inset-0 bg-[#00ff00]/20 opacity-0 group-hover:opacity-100 transition"></div>
-                    </div>
-                    <h4 class="mt-4 text-xl font-bold uppercase italic group-hover:text-[#00ff00]">Downhill en los Andes: Raw Speed</h4>
-                    <p class="text-gray-400 text-sm mt-1">Enero 2026 • 04:20</p>
-                </div>
-
-                <!-- Video/News Card 2 -->
-                <div class="group cursor-pointer">
-                    <div class="relative overflow-hidden aspect-video border-r-4 border-[#ed1c24]">
-                        <img src="https://images.unsplash.com" class="object-cover w-full h-full grayscale group-hover:grayscale-0 transition duration-500">
-                    </div>
-                    <h4 class="mt-4 text-xl font-bold uppercase italic group-hover:text-[#ed1c24]">Backflip masivo en el Rampage</h4>
-                    <p class="text-gray-400 text-sm mt-1">Diciembre 2025 • 01:45</p>
-                </div>
-
-                <!-- Video/News Card 3 -->
-                <div class="group cursor-pointer">
-                    <div class="relative overflow-hidden aspect-video">
-                        <img src="https://images.unsplash.com" class="object-cover w-full h-full grayscale group-hover:grayscale-0 transition duration-500">
-                    </div>
-                    <h4 class="mt-4 text-xl font-bold uppercase italic group-hover:text-[#00ff00]">Guía: Set-up para barro extremo</h4>
-                    <p class="text-gray-400 text-sm mt-1">Hace 2 días • 10:15</p>
-                </div>
-            </div>
-        </div>
+    <section class="hero">
+        <h1>ORIGEN SALVAJE</h1>
+        <p>La evolución del ser humano como nunca la habías visto.</p>
     </section>
 
-    <!-- Call to Action Estilo Monster -->
-    <section class="py-24 text-center px-6">
-        <h3 class="text-4xl md:text-6xl font-black uppercase mb-6">¿Eres lo suficientemente <span class="text-[#00ff00]">salvaje</span>?</h3>
-        <p class="max-w-2xl mx-auto text-gray-400 mb-10 text-lg uppercase tracking-widest">Inscríbete para las series de enduro de la temporada 2026.</p>
-        <form class="flex flex-col md:flex-row gap-4 justify-center max-w-lg mx-auto">
-            <input type="email" placeholder="TU EMAIL" class="bg-transparent border-2 border-white p-4 font-bold focus:border-[#00ff00] outline-none">
-            <button class="bg-white text-black p-4 font-black uppercase hover:bg-[#00ff00]">Suscribirse</button>
-        </form>
-    </section>
+    <div class="timeline">
+        <!-- Australopithecus -->
+        <div class="container left">
+            <div class="content">
+                <h2>4M - Australopithecus</h2>
+                <p>El inicio de la aventura. Primeros homínidos en caminar erguidos en la sabana africana.</p>
+            </div>
+        </div>
 
-    <footer class="bg-black py-8 border-t border-[#111] text-center text-xs text-gray-600 tracking-tighter">
-        <p>© 2026 ENDURO BEAST MEDIA. NO LIMITS GRANTED. DESIGNED FOR SPEED.</p>
+        <!-- Homo Habilis -->
+        <div class="container right">
+            <div class="content">
+                <h2>2.5M - Homo Habilis</h2>
+                <p>Maestros de las herramientas. El cerebro empieza a crecer, la tecnología nace aquí.</p>
+            </div>
+        </div>
+
+        <!-- Homo Erectus -->
+        <div class="container left">
+            <div class="content">
+                <h2>1.8M - Homo Erectus</h2>
+                <p>Dominio del fuego. La energía que cambió el destino de nuestra especie.</p>
+            </div>
+        </div>
+
+        <!-- Neanderthal -->
+        <div class="container right">
+            <div class="content">
+                <h2>200K - Neanderthal</h2>
+                <p>Fuerza bruta y adaptación extrema a climas gélidos.</p>
+            </div>
+        </div>
+
+        <!-- Sapiens -->
+        <div class="container left">
+            <div class="content">
+                <h2>Hoy - Homo Sapiens</h2>
+                <p>Conquista global. El límite es solo el inicio.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer style="text-align: center; padding: 50px; background: #000;">
+        <p>&copy; 2026 Proyecto Evolución X-TREME</p>
     </footer>
 
 </body>
