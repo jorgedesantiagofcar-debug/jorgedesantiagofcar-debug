@@ -3,148 +3,213 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evolución Humana | Estilo Energético</title>
+    <title>ENDURO X-TREME | Máxima Adrenalina</title>
+    <!-- Google Fonts para estilo agresivo -->
+    <link href="https://fonts.googleapis.com" rel="stylesheet">
     <style>
-        /* ESTILO INSPIRADO EN MONSTER/RED BULL */
         :root {
-            --bg-color: #0b0b0b;
-            --accent-color: #39ff14; /* Verde Monster (cambia a #ed1c24 para Red Bull) */
-            --text-color: #ffffff;
-            --secondary-bg: #1a1a1a;
+            --primary: #ccff00; /* Verde Monster (puedes cambiarlo a #ed1c24 para estilo Red Bull) */
+            --bg-dark: #050505;
+            --bg-card: #121212;
+            --text-light: #ffffff;
         }
 
         body {
             margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Futura', 'Impact', sans-serif; /* Tipografía bold tipo Red Bull */
-            overflow-x: hidden;
+            font-family: 'Oswald', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            scroll-behavior: smooth;
         }
 
-        /* Hero Section (Cabecera larga) */
+        /* HEADER / NAVBAR */
+        nav {
+            position: fixed;
+            width: 100%;
+            padding: 20px;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-around;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        nav a:hover { color: var(--primary); }
+
+        /* HERO SECTION */
         .hero {
             height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), 
+                        url('https://images.unsplash.com');
+            background-size: cover;
+            background-position: center;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com'); /* Imagen de fondo */
-            background-size: cover;
-            border-bottom: 5px solid var(--accent-color);
         }
 
         .hero h1 {
-            font-size: 5rem;
-            text-transform: uppercase;
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(4rem, 10vw, 8rem);
             margin: 0;
-            text-shadow: 3px 3px 0 var(--accent-color);
+            line-height: 0.9;
+            color: var(--primary);
+            text-shadow: 5px 5px 0px #000;
         }
 
-        /* Línea de tiempo vertical */
-        .timeline {
-            position: relative;
+        .hero p { font-size: 1.5rem; text-transform: uppercase; letter-spacing: 5px; }
+
+        /* SECCIÓN LARGA DE CONTENIDO */
+        .section {
+            padding: 100px 20px;
             max-width: 1200px;
-            margin: 100px auto;
-            padding: 40px 0;
+            margin: auto;
         }
 
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 4px;
-            background-color: var(--accent-color);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -2px;
+        .section-title {
+            font-family: 'Anton', sans-serif;
+            font-size: 3rem;
+            border-left: 10px solid var(--primary);
+            padding-left: 20px;
+            margin-bottom: 50px;
+            text-transform: uppercase;
         }
 
-        .container {
-            padding: 10px 40px;
-            position: relative;
-            width: 50%;
-            box-sizing: border-box;
+        /* GRID DE NOTICIAS/EVENTOS */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
-        .left { left: 0; text-align: right; }
-        .right { left: 50%; text-align: left; }
-
-        .content {
-            padding: 20px;
-            background-color: var(--secondary-bg);
-            border: 2px solid var(--accent-color);
-            border-radius: 6px;
-            transition: transform 0.3s;
+        .card {
+            background: var(--bg-card);
+            border: 1px solid #333;
+            transition: 0.3s;
+            overflow: hidden;
         }
 
-        .content:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px var(--accent-color);
+        .card:hover {
+            border-color: var(--primary);
+            transform: translateY(-10px);
         }
 
-        h2 { color: var(--accent-color); text-transform: uppercase; }
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            filter: grayscale(100%);
+        }
 
-        /* Responsive */
-        @media screen and (max-width: 600px) {
-            .timeline::after { left: 31px; }
-            .container { width: 100%; padding-left: 70px; padding-right: 25px; }
-            .right { left: 0%; text-align: left; }
+        .card:hover img { filter: grayscale(0%); }
+
+        .card-body { padding: 20px; }
+
+        .btn {
+            background: var(--primary);
+            color: black;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 20px;
+            text-transform: uppercase;
+        }
+
+        /* DISEÑO DE PARALLAX O FRASE GRANDE */
+        .banner {
+            background: var(--primary);
+            color: black;
+            padding: 80px 0;
+            text-align: center;
+            transform: rotate(-2deg);
+            width: 110%;
+            margin-left: -5%;
+        }
+
+        .banner h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: 4rem;
+            margin: 0;
+        }
+
+        footer {
+            background: #000;
+            text-align: center;
+            padding: 50px;
+            border-top: 5px solid var(--primary);
         }
     </style>
 </head>
 <body>
 
-    <section class="hero">
-        <h1>ORIGEN SALVAJE</h1>
-        <p>La evolución del ser humano como nunca la habías visto.</p>
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#eventos">Eventos</a>
+        <a href="#bicis">Tecnología</a>
+        <a href="#contacto">Únete</a>
+    </nav>
+
+    <section class="hero" id="inicio">
+        <h1>ENDURO<br>RIDER</h1>
+        <p>Contra la gravedad. Contra el tiempo.</p>
+        <a href="#eventos" class="btn">Ver Carreras</a>
     </section>
 
-    <div class="timeline">
-        <!-- Australopithecus -->
-        <div class="container left">
-            <div class="content">
-                <h2>4M - Australopithecus</h2>
-                <p>El inicio de la aventura. Primeros homínidos en caminar erguidos en la sabana africana.</p>
-            </div>
-        </div>
-
-        <!-- Homo Habilis -->
-        <div class="container right">
-            <div class="content">
-                <h2>2.5M - Homo Habilis</h2>
-                <p>Maestros de las herramientas. El cerebro empieza a crecer, la tecnología nace aquí.</p>
-            </div>
-        </div>
-
-        <!-- Homo Erectus -->
-        <div class="container left">
-            <div class="content">
-                <h2>1.8M - Homo Erectus</h2>
-                <p>Dominio del fuego. La energía que cambió el destino de nuestra especie.</p>
-            </div>
-        </div>
-
-        <!-- Neanderthal -->
-        <div class="container right">
-            <div class="content">
-                <h2>200K - Neanderthal</h2>
-                <p>Fuerza bruta y adaptación extrema a climas gélidos.</p>
-            </div>
-        </div>
-
-        <!-- Sapiens -->
-        <div class="container left">
-            <div class="content">
-                <h2>Hoy - Homo Sapiens</h2>
-                <p>Conquista global. El límite es solo el inicio.</p>
-            </div>
-        </div>
+    <div class="banner">
+        <h2>NO HAY LÍMITES SINO OBSTÁCULOS</h2>
     </div>
 
-    <footer style="text-align: center; padding: 50px; background: #000;">
-        <p>&copy; 2026 Proyecto Evolución X-TREME</p>
+    <section class="section" id="eventos">
+        <h2 class="section-title">Próximos Desafíos 2026</h2>
+        <div class="grid-container">
+            <div class="card">
+                <img src="https://images.unsplash.com" alt="Carrera 1">
+                <div class="card-body">
+                    <h3>Bosque Negro 50K</h3>
+                    <p>Descensos técnicos y raíces mojadas. Solo para expertos.</p>
+                    <a href="#" class="btn">Inscribirse</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com" alt="Carrera 2">
+                <div class="card-body">
+                    <h3>Andes Peak DH</h3>
+                    <p>La altura será tu mayor enemigo en esta etapa de los Andes.</p>
+                    <a href="#" class="btn">Inscribirse</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com" alt="Carrera 3">
+                <div class="card-body">
+                    <h3>Red Rock Canyon</h3>
+                    <p>Velocidad pura sobre terreno árido y saltos masivos.</p>
+                    <a href="#" class="btn">Inscribirse</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="bicis" style="background-color: #0a0a0a;">
+        <h2 class="section-title">Tecnología Carbono</h2>
+        <p>Las máquinas de 2026 están diseñadas para absorber impactos de hasta 180mm. Cuadros de fibra de carbono ultra reforzados y transmisiones inalámbricas de última generación.</p>
+        <img src="https://images.unsplash.com" style="width:100%; border: 1px solid var(--primary);">
+    </section>
+
+    <footer id="contacto">
+        <h2 style="font-family: 'Anton'; color: var(--primary);">ENDURO X-TREME</h2>
+        <p>Síguenos en nuestras redes sociales para contenido exclusivo de la Copa del Mundo 2026.</p>
+        <p>&copy; 2026 MTB Pro Series - All Rights Reserved.</p>
     </footer>
 
 </body>
